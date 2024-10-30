@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017" 
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=123
+      - MONGO_INITDB_DATABASE=big_data_test
+    volumes:
+      - mongodb_data:/data/db
+
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123
+      - MYSQL_DATABASE=big_data_test
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mongodb_data:
+  mysql_data:
